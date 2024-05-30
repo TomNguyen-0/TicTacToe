@@ -57,4 +57,7 @@ def on_button_click(i, j, player_sign):
 
     ## AI makes a move
     ai_move(convert_board_for_ai,i,j)
+    if len(check_board.get_actions()) == 0:
+        st.session_state.winner = "It's a tie!"
+        return 0
     ## check if the AI won
