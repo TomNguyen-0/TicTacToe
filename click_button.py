@@ -25,6 +25,9 @@ def ai_move(convert_board_for_ai,i=9, j=9):
     check_board = ai.driver(convert_board_for_ai,i ,j)
     if check_board.solved():
         st.session_state.winner = "A.I. Wins!"
+    elif len(check_board.get_actions()) == 0:
+        st.session_state.winner = "It's a tie!"
+        return 0
 
 def on_button_click(i, j, player_sign):
    if st.session_state.winner != '':
@@ -57,7 +60,6 @@ def on_button_click(i, j, player_sign):
 
     ## AI makes a move
     ai_move(convert_board_for_ai,i,j)
-    if len(check_board.get_actions()) == 0:
-        st.session_state.winner = "It's a tie!"
-        return 0
+    ## check if board has no more spaces
+
     ## check if the AI won
